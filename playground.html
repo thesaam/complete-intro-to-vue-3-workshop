@@ -1,52 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Friends</title>
+    <title>Playground — Complete Intro to Vue 3</title>
   </head>
   <body>
+    <h1>Welcome to Frontend Masters</h1>
     <div id="app">
-      <p v-if="characterList.length === 0">There are no characters</p>
-      <ul v-else>
-        <li v-for="character in characterList">
-          {{ character.name }}
+      <h1>Counter</h1>
+      <p>{{ count }}</p>
+      <button v-on:click="incrementCount">Increment Count</button>
+      <h1>{{ incrementAmount }}</h1>
+      <div>
+        <label for="incrementAmount">incrementAmount</label>
+        <input type="number" v-model="incrementAmount">
+      </div>
+      <hr/>
+      <p v-if="message.length % 2 === 0">
+        Even: {{ message }}
+      </p>
+      <p v-else>Odd: {{ message.toUpperCase() }}</p>
+      <ul v-for="item in listOfNumbers">
+        <li>
+          {{ item.id }}
+          <ul>
+            <li v-for="number in item.list">{{ number }}</li>
+          </ul>
         </li>
       </ul>
-      
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.min.js"></script>
 
     <script>
+
+      // Vue 3
       const { createApp } = Vue
+
 
       const app = createApp({
         data() {
           return {
-            characterList: [
-              {
-                name: "Joey"
-              },
-              {
-                name: "Ross"
-              },
-              {
-                name: "Monica"
-              },
-              {
-                name: "Chandler"
-              },
-              {
-                name: "Racheal"
+            count: 0,
+            incrementAmount: 10,
+            message: 'Hello it works!',
+            listOfNumbers: [
+              { 
+                name: 1, 
+                id: 'f796050d-b492-4cef-a472-f38606221779', 
+                list: [ 1, 2, 3]
+              }, 
+              { 
+                name: 2, 
+                id: '0a6c07e3-3f1d-4347-985b-125ba195585c',
+                list: [ 1, 2, 3]
+              }, 
+              { 
+                name: 3, 
+                id: '7778db6a-ecf9-4f11-a946-9db53743d3a4', 
+                list: [ 1, 2, 3]
+              }, 
+              { 
+                name: 4, 
+                id: '28af535b-fd8f-4b09-a404-c5a96e96c470', 
+                list: [ 1, 2, 3]
+              }, 
+              { name: 5, 
+                id: '89c28ef9-036a-4e5d-8cc9-39ca026f3932', 
+                list: [ 1, 2, 3]
               }
             ]
+          }
+        },
+
+        methods: {
+          incrementCount() {
+            this.count += this.incrementAmount
           }
         }
       })
 
-      app.mount("#app")
+      
+      app.mount('#app')
     </script>
   </body>
 </html>
