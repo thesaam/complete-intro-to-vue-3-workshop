@@ -15,14 +15,7 @@
         </li>
         <!-- {{ benderStatistics }} -->
       </ul>
-      <h2>Characters</h2>
-      <p v-if="characterList.length === 0">There are no characters</p>
-      <ul v-else>
-        <li v-for="character in characterList">
-          <p>{{ character.name }}</p>
-          <button @click="addToFav(character)">⭐Favorite</button>
-        </li>
-      </ul>
+      <!-- Placeholder for Character list -->
       <h1>Favorite List</h1>
       <ul v-if="favoriteList.length > 0">
         <li v-for="character in favoriteList">{{ character }}</li>
@@ -49,25 +42,6 @@
             name: "",
             element: []
           },
-          characterList: [
-            {
-              name: "Aang",
-              element: ["Air", "Water", "Fire", "Earth"]
-            },
-            {
-              name: "Zuko",
-              element: ["Water"]
-            },
-            {
-              name: "Toph",
-              element: ["Earth"]
-            },
-            {
-              name: "Katara",
-              element: ["Water"]
-            }
-          ],
-          favoriteList: []
         }),
         computed: {
           benderStatistics() {

@@ -1,8 +1,10 @@
 <script>
+import UserCard from './components/UserCard.vue'
 import BaseCounter from './components/BaseCounter.vue'
  export default {
   components: {
     BaseCounter,
+    UserCard
   },
 
   data() {
@@ -36,7 +38,13 @@ import BaseCounter from './components/BaseCounter.vue'
           id: '89c28ef9-036a-4e5d-8cc9-39ca026f3932', 
           list: [ 1, 2, 3]
         }
-      ]
+      ],
+      userData: {
+        name: "Client",
+        preferredFramework: "vue",
+        favoriteFood: "Swallows",
+        favoriteNumbers: [8,12,10]
+      }
     };
   },
   
@@ -52,6 +60,7 @@ import BaseCounter from './components/BaseCounter.vue'
 </script>
 
 <template>
+  <UserCard />
   <BaseCounter />
   <hr/>
   <p v-if="message.length % 2 === 0">
