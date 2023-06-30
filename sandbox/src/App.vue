@@ -1,11 +1,17 @@
 <script>
 import UserCard from './components/UserCard.vue'
 import BaseCounter from './components/BaseCounter.vue'
- export default {
+import BaseButton from './components/BaseButton.vue';
+import BaseLayout from './components/BaseLayout.vue'
+
+export default {
   components: {
+    BaseButton,
     BaseCounter,
-    UserCard
-  },
+    UserCard,
+    BaseButton,
+    BaseLayout,
+},
 
   data() {
     return {
@@ -75,8 +81,17 @@ import BaseCounter from './components/BaseCounter.vue'
 </script>
 
 <template>
-  <UserCard :user="refinedUserData" @change-name="changeName"/>
-  <BaseCounter />
+  <BaseLayout>
+    <template v-slot:sidebar>Aside</template>
+    <template v-slot:main>
+      <UserCard :user="refinedUserData" @change-name="changeName"/>
+    </template>
+    <br>
+    <template v-slot:footer>
+      <BaseCounter />
+    </template>
+  </BaseLayout>
+  <BaseButton :left=true></BaseButton>
   <hr/>
   <p v-if="message.length % 2 === 0">
     Even: {{ message }}
