@@ -64,12 +64,18 @@ import BaseCounter from './components/BaseCounter.vue'
         food: this.userData.favoriteFood
       }
     }
+  },
+
+  methods: {
+    changeName() {
+      this.userData.name = "Charlie"
+    }
   }
 };
 </script>
 
 <template>
-  <UserCard :user="refinedUserData" />
+  <UserCard :user="refinedUserData" @change-name="changeName"/>
   <BaseCounter />
   <hr/>
   <p v-if="message.length % 2 === 0">
