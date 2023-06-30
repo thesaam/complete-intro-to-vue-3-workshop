@@ -56,11 +56,20 @@ import BaseCounter from './components/BaseCounter.vue'
       }
     }
   },
+
+  computed: {
+    refinedUserData() {
+      return {
+        name: this.userData.name,
+        food: this.userData.favoriteFood
+      }
+    }
+  }
 };
 </script>
 
 <template>
-  <UserCard />
+  <UserCard :user="refinedUserData" />
   <BaseCounter />
   <hr/>
   <p v-if="message.length % 2 === 0">
